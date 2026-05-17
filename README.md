@@ -1,5 +1,5 @@
 # SAGNIK Sengupta. KINETIC ARCHITECTURE
-
+###[Live Preview](https://sagniksengupta.vercel.app/)
 A high-frequency, low-latency personal portfolio designed for scale. This repository contains a brutalist, editorial-style web experience integrated with a live WebGL 3D environment, hardware-accelerated scroll animations, and momentum-smoothed user interactions.
 
 ## ⚡ System Architecture
