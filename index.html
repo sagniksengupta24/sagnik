@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sagnik Sengupta</title>
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Premium Typography -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap"
+      rel="stylesheet"
+    />
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              accent: "#ff003c", // Retained Neon Crimson
+              paper: "#fcfbf9", // High-end editorial off-white
+            },
+            fontFamily: {
+              serif: ["Playfair Display", "serif"],
+              sans: ["Inter", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      /* Premium Mathematical Noise Texture */
+      .noise-bg {
+        position: fixed;
+        inset: 0;
+        z-index: 1;
+        pointer-events: none;
+        opacity: 0.3;
+        mix-blend-mode: multiply;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 250 250' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+      }
+    </style>
+  </head>
+  <body
+    class="bg-paper text-black antialiased overflow-x-hidden selection:bg-accent selection:text-white relative"
+  >
+    <!-- The Noise Texture Overlay -->
+    <div class="noise-bg"></div>
+
+    <!-- 3D Canvas Layer (Fixed in background, underneath the text but above the background color) -->
+    <canvas
+      id="webgl-canvas"
+      class="fixed top-0 left-0 w-full h-full pointer-events-none z-0"
+    ></canvas>
+
+    <!-- Scrollable Content Layer -->
+    <main class="relative z-10 w-full">
+      <!-- Navigation -->
+      <nav
+        class="fixed top-0 left-0 w-full z-50 px-6 md:px-12 py-8 flex justify-between items-center bg-paper/80 backdrop-blur-md border-b border-neutral-200"
+      >
+        <a href="#" class="font-serif italic text-xl tracking-wider text-black"
+          >SAGNIK.</a
+        >
+        <div
+          class="hidden md:flex items-center gap-12 text-[10px] uppercase tracking-[0.2em] font-bold text-neutral-500"
+        >
+          <a
+            href="#manifesto"
+            class="hover:text-accent transition-colors duration-300"
+            >Philosophy</a
+          >
+          <a
+            href="#archive"
+            class="hover:text-accent transition-colors duration-300"
+            >Repositories</a
+          >
+          <a
+            href="#stack"
+            class="hover:text-accent transition-colors duration-300"
+            >Systems & Academics</a
+          >
+        </div>
+        <a
+          href="#inquire"
+          class="text-[10px] uppercase tracking-widest border border-accent text-accent rounded-full px-6 py-2.5 hover:bg-accent hover:text-white transition-all duration-500 hidden sm:block font-bold"
+        >
+          Initiate Link
+        </a>
+      </nav>
+
+      <!-- Section 1: Hero -->
+      <section
+        class="min-h-screen w-full flex flex-col justify-end px-6 md:px-16 pb-24 relative"
+      >
+        <div class="max-w-5xl">
+          <p
+            class="text-xs tracking-[0.4em] text-accent uppercase mb-8 font-bold"
+          >
+            // DEVELOPER & TECH ENTHUSIAST
+          </p>
+          <h1
+            class="font-serif text-6xl md:text-8xl lg:text-9xl font-light tracking-tighter leading-[0.95] text-black"
+          >
+            Sagnik <br />
+            <span class="italic text-neutral-400"
+              >Sengupta<span class="text-accent">.</span></span
+            >
+          </h1>
+        </div>
+        <div
+          class="mt-16 flex flex-col sm:flex-row gap-8 sm:gap-24 text-[10px] uppercase tracking-widest text-neutral-500 font-bold"
+        >
+          <div>Based in India</div>
+          <div>Architecting scalable software and intelligent systems.</div>
+          <div>Scroll to initiate telemetry</div>
+        </div>
+      </section>
+
+      <!-- Section 2: The Manifesto -->
+      <section
+        id="manifesto"
+        class="py-32 px-6 md:px-16 border-t border-neutral-300 bg-white/60 backdrop-blur-md"
+      >
+        <div class="max-w-4xl mx-auto">
+          <h2
+            class="font-serif text-4xl md:text-6xl font-light mb-12 leading-tight text-black"
+          >
+            Code should operate with
+            <span class="text-accent italic">zero friction</span>. I build
+            high-frequency, low-latency applications designed for scale.
+          </h2>
+          <div
+            class="grid grid-cols-1 md:grid-cols-2 gap-12 text-sm text-neutral-600 font-light leading-relaxed"
+          >
+            <p>
+              The modern web is often congested with heavy frameworks and lazy
+              execution. My philosophy as an engineer is rooted in structural
+              discipline: every function, every component, and every API call
+              must serve a distinct, optimized purpose. If it does not
+              contribute to the efficiency of the system, it is refactored.
+            </p>
+            <p>
+              From training lightweight neural networks for localized data
+              parsing, to writing clean, modular full-stack architectures, the
+              objective is singular: uncompromising technical performance
+              wrapped in seamless, intuitive user experiences.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 3: The Animation Trigger -->
+      <section
+        id="trigger-section"
+        class="min-h-[80vh] w-full flex items-center justify-end px-6 md:px-16 bg-neutral-100/40 backdrop-blur-sm"
+      >
+        <div
+          class="max-w-md border border-neutral-300 hover:border-accent transition-colors duration-500 bg-white/80 backdrop-blur-xl p-10 rounded-2xl shadow-xl shadow-neutral-200/50"
+        >
+          <i data-lucide="cpu" class="text-accent mb-6 w-6 h-6"></i>
+          <p
+            class="text-[10px] tracking-widest text-neutral-500 uppercase mb-4 font-bold"
+          >
+            // HARDWARE ACCELERATION
+          </p>
+          <h2 class="font-serif text-3xl font-light mb-4 text-black">
+            Spatial Matrix Shift
+          </h2>
+          <p class="text-xs text-neutral-600 leading-relaxed">
+            The geometric object rendering behind this panel is not a video. It
+            is a live WebGL canvas tied directly to your browser's scroll
+            painting thread via GSAP, demonstrating optimized hardware
+            rendering.
+          </p>
+        </div>
+      </section>
+
+      <!-- Section 4: Expanded Bento Archive (6 Projects) -->
+      <section
+        id="archive"
+        class="py-32 px-6 md:px-16 border-t border-neutral-300 bg-paper/70 backdrop-blur-xl"
+      >
+        <div class="max-w-7xl mx-auto">
+          <div
+            class="flex flex-col md:flex-row justify-between items-baseline mb-20"
+          >
+            <h2 class="font-serif text-5xl font-light text-black">
+              Repositories<span class="text-accent">.</span>
+            </h2>
+            <p
+              class="text-xs uppercase tracking-widest text-accent font-bold mt-4 md:mt-0"
+            >
+              Curated Deployments
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+            <!-- Feature Box 1: MotoSim -->
+            <div
+              class="md:col-span-8 border border-neutral-300 bg-white/90 rounded-2xl p-10 hover:border-accent shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer flex flex-col justify-between tilt-card"
+              onclick="window.open('https://github.com/sagniksengupta24', '_blank')"
+            >
+              <div class="tilt-content">
+                <span
+                  class="text-[10px] tracking-widest uppercase text-accent font-bold"
+                  >Meta PyTorch OpenEnv</span
+                >
+                <h3 class="font-serif text-4xl font-light mt-4 mb-4 text-black">
+                  Recurrent-PPO-MotoSim
+                </h3>
+                <p
+                  class="text-sm text-neutral-600 font-light max-w-lg leading-relaxed"
+                >
+                  A reinforcement learning architecture simulating complex
+                  vehicle terrain traversal and engine heat constraints.
+                  Developed using advanced machine learning algorithms.
+                </p>
+              </div>
+              <div
+                class="mt-16 flex gap-3 text-[9px] uppercase tracking-widest font-bold tilt-content"
+              >
+                <span
+                  class="border border-accent/30 text-accent rounded-full px-4 py-1.5 bg-accent/5"
+                  >PyTorch</span
+                >
+                <span
+                  class="border border-accent/30 text-accent rounded-full px-4 py-1.5 bg-accent/5"
+                  >Python</span
+                >
+              </div>
+            </div>
+
+            <!-- Medium Box 1: Mental Meter -->
+            <div
+              class="md:col-span-4 border border-neutral-300 bg-white/90 rounded-2xl p-10 flex flex-col justify-between hover:border-accent shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer tilt-card group"
+              onclick="window.open('https://github.com/sagniksengupta24', '_blank')"
+            >
+              <div class="tilt-content">
+                <i
+                  data-lucide="brain-circuit"
+                  class="text-neutral-400 mb-6 w-8 h-8 group-hover:text-accent transition-colors"
+                ></i>
+                <h3 class="font-serif text-2xl font-light mb-4 text-black">
+                  Mental Meter
+                </h3>
+                <p class="text-sm text-neutral-600 font-light leading-relaxed">
+                  An AI-driven digital platform utilizing affective computing to
+                  assess subconscious mental health states through adaptive UI
+                  flows.
+                </p>
+              </div>
+            </div>
+
+            <!-- Medium Box 2: Systems -->
+            <div
+              class="md:col-span-4 border border-neutral-300 bg-white/90 rounded-2xl p-10 hover:border-accent shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer tilt-card group"
+              onclick="window.open('https://github.com/sagniksengupta24', '_blank')"
+            >
+              <div class="tilt-content">
+                <h3
+                  class="font-serif text-2xl font-light mb-4 text-black group-hover:text-accent transition-colors"
+                >
+                  Cryptographic Ledgers
+                </h3>
+                <p class="text-sm text-neutral-600 font-light leading-relaxed">
+                  Studying decentralized networks and mathematical trust
+                  algorithms to ensure secure data transfer protocols without a
+                  central authority.
+                </p>
+              </div>
+            </div>
+
+            <!-- Medium Box 3: NLP -->
+            <div
+              class="md:col-span-4 border border-neutral-300 bg-white/90 rounded-2xl p-10 hover:border-accent shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer tilt-card group"
+              onclick="window.open('https://github.com/sagniksengupta24', '_blank')"
+            >
+              <div class="tilt-content">
+                <h3
+                  class="font-serif text-2xl font-light mb-4 text-black group-hover:text-accent transition-colors"
+                >
+                  NLP Sentiment Engines
+                </h3>
+                <p class="text-sm text-neutral-600 font-light leading-relaxed">
+                  Engineering "Digital Brains" by training Python-based Neural
+                  Networks to interpret complex linguistic patterns with
+                  human-like intuition.
+                </p>
+              </div>
+            </div>
+
+            <!-- Medium Box 4: Telemetry -->
+            <div
+              class="md:col-span-4 border border-neutral-300 bg-white/90 rounded-2xl p-10 hover:border-accent shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer tilt-card group"
+              onclick="window.open('https://github.com/sagniksengupta24', '_blank')"
+            >
+              <div class="tilt-content">
+                <h3
+                  class="font-serif text-2xl font-light mb-4 text-black group-hover:text-accent transition-colors"
+                >
+                  Obsidian Telemetry
+                </h3>
+                <p class="text-sm text-neutral-600 font-light leading-relaxed">
+                  A sub-millisecond pipeline built to track multi-threaded
+                  application states in real-time without blocking the main
+                  browser thread.
+                </p>
+              </div>
+            </div>
+
+            <!-- Future Deployments Panel -->
+            <div
+              class="md:col-span-12 border border-neutral-300 border-dashed bg-white/40 backdrop-blur-md rounded-2xl p-10 md:p-16 transition-colors cursor-default grid grid-cols-1 md:grid-cols-2 gap-12 items-center tilt-card"
+            >
+              <div class="tilt-content">
+                <!-- Live Pulsing Status Indicator -->
+                <div class="flex items-center gap-3 mb-6">
+                  <span class="relative flex h-2 w-2">
+                    <span
+                      class="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"
+                    ></span>
+                    <span
+                      class="relative inline-flex rounded-full h-2 w-2 bg-accent"
+                    ></span>
+                  </span>
+                  <span
+                    class="text-[10px] tracking-widest uppercase text-accent font-mono font-bold"
+                    >Status: Compiling</span
+                  >
+                </div>
+
+                <h3 class="font-serif text-4xl font-light mb-4 text-black">
+                  Pipeline Expansion
+                </h3>
+                <p class="text-sm text-neutral-600 font-light leading-relaxed">
+                  Several advanced engineering projects are currently in the
+                  development phase. New repositories covering distributed
+                  systems, low-level optimization, and machine learning models
+                  will be synchronized to this archive shortly.
+                </p>
+              </div>
+
+              <!-- Simulated Code Compiling Skeleton (Light Mode) -->
+              <div
+                class="h-64 w-full border border-neutral-200 bg-white/50 rounded-xl relative overflow-hidden flex flex-col justify-center p-8 tilt-content shadow-inner"
+              >
+                <div class="space-y-4 w-full animate-pulse opacity-40">
+                  <div class="h-1.5 bg-accent rounded w-3/4"></div>
+                  <div class="h-1.5 bg-neutral-400 rounded w-1/2"></div>
+                  <div class="h-1.5 bg-neutral-400 rounded w-5/6"></div>
+                  <div class="h-1.5 bg-accent rounded w-1/3"></div>
+                  <div class="pt-4 space-y-4">
+                    <div class="h-1.5 bg-neutral-400 rounded w-2/3"></div>
+                    <div class="h-1.5 bg-neutral-400 rounded w-1/4"></div>
+                    <div class="h-1.5 bg-accent rounded w-1/2"></div>
+                  </div>
+                </div>
+                <div
+                  class="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-white/80 to-transparent"
+                ></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 5: Technical Stack & Academics Directory -->
+      <section
+        id="stack"
+        class="py-32 px-6 md:px-16 border-t border-neutral-300 bg-white/80 backdrop-blur-xl"
+      >
+        <div class="max-w-5xl mx-auto">
+          <p
+            class="text-[10px] tracking-widest text-neutral-500 uppercase mb-16 text-center font-bold"
+          >
+            // SYSTEM ARCHITECTURE & ACADEMICS
+          </p>
+
+          <div
+            class="grid grid-cols-1 sm:grid-cols-3 gap-16 border-y border-neutral-300 py-16"
+          >
+            <!-- Stack Column 1 -->
+            <div>
+              <h4
+                class="font-serif text-xl font-light text-black mb-8 border-b border-accent pb-4"
+              >
+                Core Engineering
+              </h4>
+              <ul
+                class="space-y-4 text-xs font-mono text-neutral-600 uppercase"
+              >
+                <li class="hover:text-accent transition-colors cursor-default">
+                  Python 3 Architecture
+                </li>
+                <li class="hover:text-accent transition-colors cursor-default">
+                  C++ Execution
+                </li>
+                <li class="hover:text-accent transition-colors cursor-default">
+                  TypeScript / ES6
+                </li>
+                <li class="hover:text-accent transition-colors cursor-default">
+                  React.js & Next.js
+                </li>
+                <li class="hover:text-accent transition-colors cursor-default">
+                  Three.js / WebGL
+                </li>
+              </ul>
+            </div>
+
+            <!-- Stack Column 2 -->
+            <div>
+              <h4
+                class="font-serif text-xl font-light text-black mb-8 border-b border-accent pb-4"
+              >
+                Data & Intelligence
+              </h4>
+              <ul
+                class="space-y-4 text-xs font-mono text-neutral-600 uppercase"
+              >
+                <li class="hover:text-accent transition-colors cursor-default">
+                  PyTorch Framework
+                </li>
+                <li class="hover:text-accent transition-colors cursor-default">
+                  NLP & Sentiment Analysis
+                </li>
+                <li class="hover:text-accent transition-colors cursor-default">
+                  Reinforcement Learning
+                </li>
+                <li class="hover:text-accent transition-colors cursor-default">
+                  PostgreSQL Relational
+                </li>
+                <li class="hover:text-accent transition-colors cursor-default">
+                  REST & Fast APIs
+                </li>
+              </ul>
+            </div>
+
+            <!-- Academic Column 3 -->
+            <div>
+              <h4
+                class="font-serif text-xl font-light text-black mb-8 border-b border-accent pb-4"
+              >
+                Academic Trajectory
+              </h4>
+              <ul class="space-y-6 text-xs text-neutral-600">
+                <li class="group">
+                  <div
+                    class="font-bold text-black group-hover:text-accent transition-colors uppercase tracking-widest text-[10px] mb-1"
+                  >
+                    Scaler School of Technology
+                  </div>
+                  <div class="font-light">
+                    Software Engineering & Computer Science
+                  </div>
+                </li>
+                <li class="group">
+                  <div
+                    class="font-bold text-black group-hover:text-accent transition-colors uppercase tracking-widest text-[10px] mb-1"
+                  >
+                    IIT Madras
+                  </div>
+                  <div class="font-light">
+                    BS in Data Science and Applications
+                  </div>
+                </li>
+                <li class="group">
+                  <div
+                    class="font-bold text-black group-hover:text-accent transition-colors uppercase tracking-widest text-[10px] mb-1"
+                  >
+                    U.P. Public School
+                  </div>
+                  <div class="font-light">Higher Secondary Education</div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 6: Contact Console -->
+      <section
+        id="inquire"
+        class="py-40 px-6 md:px-16 border-t border-neutral-300 bg-paper/90 backdrop-blur-md"
+      >
+        <div class="max-w-2xl mx-auto text-center">
+          <i
+            data-lucide="terminal"
+            class="text-accent mx-auto mb-8 w-8 h-8"
+          ></i>
+          <h2 class="font-serif text-5xl font-light mb-6 text-black">
+            Initiate Pipeline
+          </h2>
+          <p class="text-sm text-neutral-600 font-light leading-relaxed mb-16">
+            Currently open for collaborative engineering projects, software
+            development roles, and research opportunities. Establish a secure
+            connection below.
+          </p>
+
+          <form class="space-y-8 text-left">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+              <div
+                class="border-b border-neutral-400 focus-within:border-accent transition-colors"
+              >
+                <label
+                  class="block text-[9px] uppercase tracking-widest text-neutral-500 font-bold mb-2"
+                  >Entity ID</label
+                >
+                <input
+                  type="text"
+                  placeholder="Your Name"
+                  class="w-full bg-transparent outline-none text-sm text-black placeholder-neutral-400 pb-2"
+                />
+              </div>
+              <div
+                class="border-b border-neutral-400 focus-within:border-accent transition-colors"
+              >
+                <label
+                  class="block text-[9px] uppercase tracking-widest text-neutral-500 font-bold mb-2"
+                  >Return Address</label
+                >
+                <input
+                  type="email"
+                  placeholder="email@domain.com"
+                  class="w-full bg-transparent outline-none text-sm text-black placeholder-neutral-400 pb-2"
+                />
+              </div>
+            </div>
+            <div
+              class="border-b border-neutral-400 focus-within:border-accent transition-colors"
+            >
+              <label
+                class="block text-[9px] uppercase tracking-widest text-neutral-500 font-bold mb-2"
+                >Packet Payload</label
+              >
+              <textarea
+                rows="3"
+                placeholder="Outline your operational intent..."
+                class="w-full bg-transparent outline-none text-sm text-black placeholder-neutral-400 pb-2 resize-none"
+              ></textarea>
+            </div>
+            <button
+              type="button"
+              class="w-full py-4 bg-accent text-white text-[10px] uppercase tracking-[0.2em] font-bold rounded shadow-lg shadow-accent/30 hover:bg-black hover:shadow-none transition-all duration-300"
+            >
+              Transmit Data
+            </button>
+          </form>
+        </div>
+      </section>
+
+      <!-- Section 7: Mega Footer -->
+      <footer
+        class="pt-24 pb-12 px-6 md:px-16 border-t border-accent bg-black text-white"
+      >
+        <div
+          class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-16 mb-24 text-[10px] uppercase tracking-widest text-neutral-400 font-bold"
+        >
+          <div class="md:col-span-4">
+            <h5 class="text-white mb-6">Directory</h5>
+            <ul class="space-y-4">
+              <li>
+                <a href="#" class="hover:text-accent transition-colors"
+                  >Home Array</a
+                >
+              </li>
+              <li>
+                <a href="#archive" class="hover:text-accent transition-colors"
+                  >Repositories</a
+                >
+              </li>
+              <li>
+                <a href="#stack" class="hover:text-accent transition-colors"
+                  >System Stack</a
+                >
+              </li>
+              <li>
+                <a href="#inquire" class="hover:text-accent transition-colors"
+                  >Transmission</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div class="md:col-span-4">
+            <h5 class="text-white mb-6">Social Ledgers</h5>
+            <ul class="space-y-4">
+              <li>
+                <a
+                  href="https://github.com/sagniksengupta24"
+                  target="_blank"
+                  class="hover:text-accent transition-colors flex items-center gap-2"
+                  ><i data-lucide="github" class="w-3 h-3"></i> GitHub
+                  Repository</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="hover:text-accent transition-colors flex items-center gap-2"
+                  ><i data-lucide="linkedin" class="w-3 h-3"></i> LinkedIn
+                  Profile</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://www.instagram.com/sagnik.24/"
+                  target="_blank"
+                  class="hover:text-accent transition-colors flex items-center gap-2"
+                  ><i data-lucide="instagram" class="w-3 h-3"></i> Instagram
+                  Feed</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div class="md:col-span-4 text-left md:text-right">
+            <h5 class="text-white mb-6">Current Location</h5>
+            <ul class="space-y-4 font-normal">
+              <li>India</li>
+              <li class="mt-8 text-neutral-500 font-bold">
+                Local Time:
+                <span id="time-display" class="text-accent">--:--:--</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div
+          class="border-t border-neutral-900 pt-8 flex flex-col md:flex-row justify-between items-center text-[9px] uppercase tracking-[0.3em] text-neutral-600 gap-4 font-bold"
+        >
+          <div>© 2026 SAGNIK SENGUPTA // ALL RIGHTS RESERVED</div>
+          <div>Engineered for Scale.</div>
+        </div>
+      </footer>
+    </main>
+
+    <!-- Scripts -->
+    <script>
+      if (window.lucide) {
+        lucide.createIcons();
+      }
+
+      function updateClock() {
+        const now = new Date();
+        const timeString = now.toLocaleTimeString("en-US", { hour12: false });
+        const clockEl = document.getElementById("time-display");
+        if (clockEl) clockEl.textContent = timeString + " IST";
+      }
+      setInterval(updateClock, 1000);
+      updateClock();
+    </script>
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>
